@@ -1,11 +1,12 @@
 import React from 'react'
 import { useState ,useEffect } from 'react';
 import axios from 'axios';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 const  Hellow = (props) =>{
-    const [product, setProduct] =useState();
- const url =`https://swapi.dev/api/people/1`
-
+    
+    const {id} = useParams();
+    const [product, setProduct] =useState(null);
+ const url =`https://swapi.dev/api/people/${id}`
 useEffect(()=>{
 axios.get(url).then(response => {
  setProduct(response.data);
@@ -20,7 +21,7 @@ if(product){
              <h1>{product.name}</h1>
          </div>
 
-         <div>
+         {/* <div>
              <h1>{product.height}</h1>
          </div>
 
@@ -30,7 +31,7 @@ if(product){
 
          <div>
              <h1>{product.eye_color}</h1>
-         </div>
+         </div> */}
     </div>
 }
   return (
